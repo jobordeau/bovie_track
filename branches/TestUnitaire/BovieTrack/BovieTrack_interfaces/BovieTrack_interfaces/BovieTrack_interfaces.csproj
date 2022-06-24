@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="affichage\img\hobbit.jpg" />
+    <None Remove="affichage\img\strangerthings.png" />
+    <None Remove="affichage\img\titanic.jpg" />
+    <None Remove="ajout\img\DefaultImage.png" />
+    <None Remove="ajout\img\save.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="affichage\img\hobbit.jpg" />
+    <Resource Include="affichage\img\strangerthings.png" />
+    <Resource Include="affichage\img\titanic.jpg" />
+    <Resource Include="ajout\img\DefaultImage.png" />
+    <Resource Include="ajout\img\save.png" />
+  </ItemGroup>
+
+</Project>

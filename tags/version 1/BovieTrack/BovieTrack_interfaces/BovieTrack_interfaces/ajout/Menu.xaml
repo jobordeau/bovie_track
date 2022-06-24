@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Interface_Ajouter_Element_Collection.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Interface_Ajouter_Element_Collection"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel>
+
+        <Grid DockPanel.Dock="Top">
+            <TextBlock Text="Choisissez ce que vous voulez ajouter" VerticalAlignment="Center" HorizontalAlignment="center" FontSize="40" ></TextBlock>
+        </Grid>
+    </DockPanel>
+</UserControl>

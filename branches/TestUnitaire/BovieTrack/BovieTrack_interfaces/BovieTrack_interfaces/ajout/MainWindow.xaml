@@ -1,0 +1,109 @@
+﻿<Window x:Class="Interface_Ajouter_Element_Collection.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Interface_Ajouter_Element_Collection"
+        mc:Ignorable="d"
+        Title="Bovie Track" Height="450" Width="800" MinWidth="760" MinHeight="500">
+    <DockPanel Background="#FF2F3136">
+        <Grid DockPanel.Dock="Top">
+            <Grid.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Margin" Value="5 50 5 5"/>
+                    <Setter Property="Height" Value="60"/>
+                    <Setter Property="Width" Value="150"/>
+                    <Setter Property="Background" Value="#42464C"/>
+                    <Setter Property="BorderBrush" Value="#202225"/>
+                    <Setter Property="BorderThickness" Value="5"/>
+                    <Setter Property="CornerRadius" Value="25"/>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#878F9C"/>
+                            <Setter Property="BorderBrush" Value="#D6D6D6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="BorderBrush" Value="#D6D6D6"/>
+                            <Setter Property="Background" Value="#878F9C"/>                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                <Style TargetType="ToggleButton">
+                    <Setter Property="Background" Value="{x:Null}"/>
+                    <Setter Property="FontSize" Value="28"/>
+                    <Setter Property="Foreground" Value="#D6D6D6"/>
+                    <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Border Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Height="30" Width="100" Click="Retour_Click" Style="{StaticResource goback_button}" >
+
+                <StackPanel Orientation="Horizontal" >
+                    <Viewbox Margin="5,2,0,2" VerticalAlignment="Center" MaxHeight="30" >
+                        <Canvas Width="20" Height="20" >
+                            <Line X1="3" Y1="10" X2="18" Y2="17" Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}" StrokeThickness="2" />
+                            <Line X1="3" Y1="10" X2="18" Y2="3" Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}" StrokeThickness="2" />
+                        </Canvas>
+                    </Viewbox>
+                    <TextBlock Padding="5" Margin="5,-2,5,0" Text="Retour" VerticalAlignment="Center" Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+                </StackPanel>
+
+            </Button>
+            <Border Grid.Column="0" x:Name="filmBorder">
+                <ToggleButton Content="Film" Grid.Column="0" Click="Film_Click" x:Name="film">
+                    <ToggleButton.Effect>
+                        <DropShadowEffect BlurRadius="10"/>
+                    </ToggleButton.Effect>
+                </ToggleButton>
+            </Border>
+            <Border Grid.Column="1" x:Name="serieBorder">
+                <ToggleButton Content="Série" Grid.Column="1" Click="Serie_Click" x:Name="serie">
+                    <ToggleButton.Effect>
+                        <DropShadowEffect BlurRadius="10"/>
+                    </ToggleButton.Effect>
+                </ToggleButton>
+            </Border>
+            <Border Grid.Column="2" x:Name="livreBorder">
+               <ToggleButton Content="Livre" Grid.Column="2" Click="Livre_Click" x:Name="livre">
+                    <ToggleButton.Effect>
+                        <DropShadowEffect BlurRadius="10"/>
+                    </ToggleButton.Effect>
+                </ToggleButton>
+            </Border>
+            <Button Grid.Column="2" 
+                     Height="50" Width="50" 
+                     HorizontalAlignment="Right" VerticalAlignment="Top" 
+                     Margin="5 5 5 0" FontSize="12"  
+                     Background="Transparent" BorderBrush="Transparent" 
+                     Visibility="Hidden"
+                     Style="{StaticResource basic_button}"
+                     x:Name="sauvegarder">
+                <Image Source="img/save.png"/>
+            </Button>
+        </Grid>
+        <ContentControl x:Name="contentControl" Foreground="#FFD1CFCF">
+            <local:Menu/>
+        </ContentControl>
+    </DockPanel>
+</Window>

@@ -1,0 +1,144 @@
+﻿<UserControl x:Class="Interface_Ajouter_Element_Collection.Livre"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Interface_Ajouter_Element_Collection"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel>
+        <Border  BorderBrush="#202225" BorderThickness="5" CornerRadius="8" Margin="50 5 50 10 ">
+            <DockPanel Background="#FF36393F">
+                <DockPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="16"/>
+
+                    </Style>
+                </DockPanel.Resources>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Ajouter une image :" VerticalAlignment="Center" Grid.Column="0" HorizontalAlignment="Right"/>
+                        <Button Background="Transparent" BorderBrush="Transparent" Click="changeImage_Click" Style="{StaticResource basic_button}" Grid.Column="1" HorizontalAlignment="Center" Margin="5 5 5 5" VerticalAlignment="Center">
+                            <Image Source="img/DefaultImage.png" x:Name="icone_film" />
+                        </Button>
+                        <DockPanel Grid.Column="2">
+                            <Button Content="Modifier les tags" VerticalAlignment="Top" Grid.Column="1" Margin="10" Style="{StaticResource basic_button}" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+                            <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Text="Nombre de pages * :" FontSize="13"/>
+                                <TextBox Width="50" TextAlignment="Center" Style="{StaticResource fill_opinion_text}"/>
+                            </WrapPanel>
+                        </DockPanel>
+                        <WrapPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center">
+                            <WrapPanel>
+                                <TextBlock Text="Titre du livre * :"/>
+                                <TextBox Width="200" Style="{StaticResource fill_opinion_text}"/>
+                            </WrapPanel>
+                            <WrapPanel Margin="50 0 0 0 ">
+                                <TextBlock Text="Auteur * :"/>
+                                <TextBox Width="200" Style="{StaticResource fill_opinion_text}"/>
+                            </WrapPanel>
+                        </WrapPanel>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MinWidth="400"/>
+                        <ColumnDefinition MaxWidth="500"/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Column="0">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <WrapPanel Grid.Row="0">
+                                <TextBlock Text="Avez-vous déjà lu ce livre en entier ?* "/>
+                                <RadioButton VerticalAlignment="Center" FontSize="12" Checked="Termine_Checked">
+                                    <RadioButton.Content >oui</RadioButton.Content>
+                                </RadioButton>
+                                <RadioButton VerticalAlignment="Center" Checked="NonTermine_Checked">
+                                    <RadioButton.Content>non</RadioButton.Content>
+                                </RadioButton>
+                            </WrapPanel>
+                            <WrapPanel Grid.Row="1" Visibility="Hidden" x:Name="NonTermine">
+                                <TextBlock Text="Avez-vous commencer à le lire ?* "/>
+                                <RadioButton VerticalAlignment="Center" FontSize="12" Checked="Commence_Checked" x:Name="Reboot_Commence">
+                                    <RadioButton.Content >oui</RadioButton.Content>
+                                </RadioButton>
+                                <RadioButton VerticalAlignment="Center" Checked="NonCommence_Checked">
+                                    <RadioButton.Content>non</RadioButton.Content>
+                                </RadioButton>
+                            </WrapPanel>
+                            <WrapPanel Grid.Row="1" Visibility="Hidden" x:Name="Vu" >
+                                <TextBlock Text="Combien de fois l'avez vous lu en entier ? * "/>
+                                    <TextBox VerticalAlignment="Bottom" Margin="10 0" Width="20" Style="{StaticResource fill_opinion_text}"/>
+                            </WrapPanel>
+                            <WrapPanel Grid.Row="2" Visibility="Hidden" x:Name="LastView" >
+                                <TextBlock Text="Dernière fois que vous l'avez lu :"/>
+                                <DatePicker SelectedDateFormat="Long" BorderThickness="0"/>
+                            </WrapPanel>
+                            <WrapPanel Grid.Row="4" Visibility="Hidden" x:Name="progress">
+                                <TextBlock Text="À quel page en êtes vous ? * "/>
+                                    <TextBox Width="50" TextAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource fill_opinion_text}"/>
+                            </WrapPanel>
+                            <WrapPanel Grid.Row="3" Visibility="Hidden" x:Name="Recommence">
+                                <TextBlock Text="Avez-vous recommencer à le lire ?* "/>
+                                <RadioButton VerticalAlignment="Center" FontSize="12" Checked="Commence_Checked" x:Name="Reboot_recommence">
+                                    <RadioButton.Content >oui</RadioButton.Content>
+                                </RadioButton>
+                                <RadioButton VerticalAlignment="Center" Checked="NonCommence_Checked">
+                                    <RadioButton.Content>non</RadioButton.Content>
+                                </RadioButton>
+                            </WrapPanel>
+                            <WrapPanel Grid.Row="5" x:Name="AVoir" VerticalAlignment="Bottom">
+                                <CheckBox Click="Planifie_Click" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                                <WrapPanel x:Name="Planifie"  IsEnabled="False" Opacity="0.5">
+                                    <TextBlock Text="À voir le :"/>
+                                    <DatePicker SelectedDateFormat="Long" BorderThickness="0"/>
+                                </WrapPanel>
+                            </WrapPanel>
+                        </Grid>
+
+                    </DockPanel>
+                        <DockPanel Grid.Column="1" Margin="5">
+                            <DockPanel  DockPanel.Dock="Top">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="3*"/>
+                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Avis " HorizontalAlignment="Left" DockPanel.Dock="Top" Grid.Column="0" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Note :" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                                    <TextBox Width="25" Grid.Column="2" HorizontalAlignment="Right" FontSize="16"  Style="{StaticResource fill_opinion_text}" VerticalAlignment="Bottom" TextAlignment="Center"/>
+                                    <TextBlock Text="/10" Grid.Column="3" HorizontalAlignment="Left" TextAlignment="Justify" VerticalAlignment="Bottom"/>
+                                </Grid>
+                            </DockPanel>
+                            <TextBox FontSize="16" AcceptsReturn="True" VerticalScrollBarVisibility="auto" HorizontalScrollBarVisibility="Auto" Style="{StaticResource fill_opinion_text}"/>
+                        </DockPanel>
+                    </Grid>
+                </Grid>
+            </DockPanel>
+
+        </Border>
+    </DockPanel>
+</UserControl>

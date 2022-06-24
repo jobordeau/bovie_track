@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>C:\Users\Alex\Desktop\BovieTrack\BovieTrackBin\</OutputPath>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <None Remove="affichage\img\game_of_thrones.png" />
+    <None Remove="affichage\img\harry_potter.jpg" />
+    <None Remove="affichage\img\hobbit.jpg" />
+    <None Remove="affichage\img\miserables.jpg" />
+    <None Remove="affichage\img\nemo.jpg" />
+    <None Remove="affichage\img\prison_break.jpg" />
+    <None Remove="affichage\img\ratatouille.jpg" />
+    <None Remove="affichage\img\reine_des_neiges.jpg" />
+    <None Remove="affichage\img\strangerthings.png" />
+    <None Remove="ajout\img\DefaultImage.png" />
+    <None Remove="ajout\img\save.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BovieTrack_logique\BovieTrack_Lib\Modele.csproj" />
+    <ProjectReference Include="..\..\Data\Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="ajout\img\DefaultImage.png" />
+    <Resource Include="ajout\img\save.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="affichage\img\" />
+  </ItemGroup>
+
+</Project>

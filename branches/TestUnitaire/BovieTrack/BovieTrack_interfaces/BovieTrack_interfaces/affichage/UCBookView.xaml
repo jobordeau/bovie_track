@@ -1,0 +1,146 @@
+﻿<UserControl x:Class="Bovie_Track.UCBookView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bovie_Track"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+   
+
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="2.5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1.3*"/>
+            </Grid.RowDefinitions>
+
+
+
+            <Button Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Style="{StaticResource goback_button}" >
+
+                <StackPanel Orientation="Horizontal" >
+                    <Viewbox Margin="5,2,0,2" VerticalAlignment="Center" MaxHeight="30" >
+                        <Canvas Width="20" Height="20" >
+                            <Line X1="3" Y1="10" X2="18" Y2="17" Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}" StrokeThickness="2" />
+                            <Line X1="3" Y1="10" X2="18" Y2="3" Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}" StrokeThickness="2" />
+                        </Canvas>
+                    </Viewbox>
+                    <TextBlock Padding="5" Margin="5,-2,5,0" Text="Retour" VerticalAlignment="Center" Foreground="{Binding Path=Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Button}}}"/>
+                </StackPanel>
+
+            </Button>
+
+        <TextBlock Grid.Column="1" Grid.Row="0" Text="Livre" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10,10" Style="{StaticResource titles}"/>
+
+            <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0" Source="img/Hobbit.jpg" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Column="1" Text="Le Hobbit" TextWrapping="Wrap" Margin="10" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource element_title}"/>
+            </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Tags" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource info_name}" />
+
+            <ScrollViewer Grid.Row="1" Width="100" Style="{StaticResource tags}" Margin="10,5">
+                <StackPanel Margin="3,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock TextWrapping="Wrap">Action</TextBlock>
+                    <TextBlock TextWrapping="Wrap">Aventure</TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+
+            <Button Grid.Row="2" Content="Modifier tag(s)" Margin="10,5" Height="25" Style="{StaticResource basic_button}"/>
+        </Grid>
+
+        <Grid Grid.Column="0" Grid.Row="2" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" FontSize="17" Text="Avis" HorizontalAlignment="Left" Margin="30,0" Style="{StaticResource info_name}"/>
+
+                <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,-10,30,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <TextBlock Text="Pas de note" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource info_name}"/>
+                </StackPanel>
+
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="#FF36393F" BorderThickness="4">
+                <ScrollViewer Style="{StaticResource opinion_text}">
+                    <TextBlock TextWrapping="Wrap"  Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        Pas d'avis
+                    </TextBlock>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+
+            
+    
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition />
+                    <RowDefinition Height="0"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="310 pages"  Style="{StaticResource infos_element}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="J.R.R Tolkien" Style="{StaticResource infos_element}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <StackPanel Grid.Row="2"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock  Text="Restant" Margin="0,0,0,5" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource info_name}"/>
+                    <TextBlock  Text="--pages" Style="{StaticResource infos_element}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+
+
+
+            <Grid Grid.Column="0" Grid.Row="3" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Lu 0 fois" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource infos_element}"/>
+                    <TextBlock  Text="A lire" Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource infos_element}" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Planifié pour" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource info_name}"/>
+                    <TextBlock  Text="le 15/07/2020" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource infos_element}" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Etat de la lecture" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource info_name}"/>
+                    <TextBlock Text="page 0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource infos_element}"/>
+                </StackPanel>
+
+            </Grid>
+
+            <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Content="Modifier" Margin="5,0" Height="20" Width="70" Style="{StaticResource basic_button}"/>
+            <Button Content="Supprimer" Margin="5,5" Height="20" Width="70" Style="{StaticResource basic_button}"/>
+            </StackPanel>
+
+        </Grid>
+
+
+</UserControl>

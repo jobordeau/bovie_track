@@ -1,0 +1,132 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Modele": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Data.dll": {}
+        }
+      },
+      "DataContractPersistance/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Modele": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DataContractPersistance.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataContractPersistance.dll": {}
+        }
+      },
+      "Modele/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Modele.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Modele.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Data/1.0.0": {
+      "type": "project",
+      "path": "../Data/Data.csproj",
+      "msbuildProject": "../Data/Data.csproj"
+    },
+    "DataContractPersistance/1.0.0": {
+      "type": "project",
+      "path": "../DataContractPersistance/DataContractPersistance.csproj",
+      "msbuildProject": "../DataContractPersistance/DataContractPersistance.csproj"
+    },
+    "Modele/1.0.0": {
+      "type": "project",
+      "path": "../BovieTrack_logique/BovieTrack_Lib/Modele.csproj",
+      "msbuildProject": "../BovieTrack_logique/BovieTrack_Lib/Modele.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "Data >= 1.0.0",
+      "DataContractPersistance >= 1.0.0",
+      "Modele >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Jojoc\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Jojoc\\Documents\\Repository\\trunk\\source\\BovieTrack\\Test_DataContract\\Test_DataContract.csproj",
+      "projectName": "Test_DataContract",
+      "projectPath": "D:\\Jojoc\\Documents\\Repository\\trunk\\source\\BovieTrack\\Test_DataContract\\Test_DataContract.csproj",
+      "packagesPath": "C:\\Users\\Jojoc\\.nuget\\packages\\",
+      "outputPath": "D:\\Jojoc\\Documents\\Repository\\trunk\\source\\BovieTrack\\Test_DataContract\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Jojoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "D:\\Jojoc\\Documents\\Repository\\trunk\\source\\BovieTrack\\BovieTrack_logique\\BovieTrack_Lib\\Modele.csproj": {
+              "projectPath": "D:\\Jojoc\\Documents\\Repository\\trunk\\source\\BovieTrack\\BovieTrack_logique\\BovieTrack_Lib\\Modele.csproj"
+            },
+            "D:\\Jojoc\\Documents\\Repository\\trunk\\source\\BovieTrack\\DataContractPersistance\\DataContractPersistance.csproj": {
+              "projectPath": "D:\\Jojoc\\Documents\\Repository\\trunk\\source\\BovieTrack\\DataContractPersistance\\DataContractPersistance.csproj"
+            },
+            "D:\\Jojoc\\Documents\\Repository\\trunk\\source\\BovieTrack\\Data\\Data.csproj": {
+              "projectPath": "D:\\Jojoc\\Documents\\Repository\\trunk\\source\\BovieTrack\\Data\\Data.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

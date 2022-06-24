@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="Appli.EditionSerie"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Appli"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel>
+        <Border  BorderBrush="#202225" BorderThickness="5" CornerRadius="8" Margin="50 5 50 10 ">
+            <DockPanel Background="#FF36393F">
+                <DockPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="16"/>
+                    </Style>
+                </DockPanel.Resources>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Ajouter une image :" VerticalAlignment="Center" Grid.Column="0" HorizontalAlignment="Right"/>
+                        <Button Background="Transparent" BorderBrush="Transparent" Click="ChangeImage_Click" Style="{StaticResource basic_button}" Grid.Column="1" HorizontalAlignment="Center" Margin="5 5 5 5" VerticalAlignment="Center">
+                            <!-- Image -->
+                            <Viewbox>
+                                <Rectangle Width="120" Height="100">
+                                    <Rectangle.Fill>
+                                        <ImageBrush ImageSource="{Binding Image, Converter={StaticResource string2ImageConverter}}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Viewbox>
+                        </Button>
+                        <DockPanel Grid.Column="2">
+                            <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Text="Nombre de saisons * :" HorizontalAlignment="Center" FontSize="12"/>
+                                <!-- NbSaisons -->
+                                <TextBox Text="{Binding NbSaisons, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True}"
+                                         SourceUpdated="NbSaisonsModif_TargetUpdated" TargetUpdated="NbSaisonsModif_TargetUpdated" Width="20" TextAlignment="Center" Style="{StaticResource fill_opinion_text}"/>
+                            </WrapPanel>
+                        </DockPanel>
+                        <WrapPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+                            <TextBlock Text="Titre de la série * :"/>
+                            <!-- Nom -->
+                            <TextBox Text="{Binding Nom}" Width="200" Style="{StaticResource fill_opinion_text}"/>
+                        </WrapPanel>
+                        <WrapPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 10 0">
+                            <TextBlock Text="Saison sélectionné :"/>
+                            <!-- Selection saison -->
+                            <ComboBox Name="comboboxSaisonsModif" SelectionChanged="ComboboxSaisonsModif_SelectionChanged" Height="25"   Grid.Column="2"  SelectedIndex="0"/>
+
+
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="450"/>
+                            <ColumnDefinition MaxWidth="500"/>
+                        </Grid.ColumnDefinitions>
+                        <DockPanel Grid.Column="0">
+                            <Grid Margin="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                
+                                <WrapPanel Grid.Row="0">
+                                    <TextBlock Text="Avez-vous déjà vu la série ?* "/>
+                                    <RadioButton Name="termineRadio" VerticalAlignment="Center" FontSize="12" Checked="Termine_Checked">
+                                        <RadioButton.Content >oui</RadioButton.Content>
+                                    </RadioButton>
+                                    <!-- Nbfini = 0 -->
+                                    <RadioButton Name="nonTermineRadio" VerticalAlignment="Center" Checked="NonTermine_Checked">
+                                        <RadioButton.Content>non</RadioButton.Content>
+                                    </RadioButton>
+                                </WrapPanel>
+
+                                <WrapPanel Grid.Row="1" Visibility="Hidden" x:Name="NonTermine">
+                                    <TextBlock Text="Avez-vous commencer la série ?* "/>
+                                    <RadioButton Name="commenceRadio" VerticalAlignment="Center" FontSize="12" Checked="Commence_Checked">
+                                        <RadioButton.Content >oui</RadioButton.Content>
+                                    </RadioButton>
+                                    <!-- Etat = null -->
+                                    <RadioButton Name="nonCommenceRadio" VerticalAlignment="Center" Checked="NonCommence_Checked">
+                                        <RadioButton.Content>non</RadioButton.Content>
+                                    </RadioButton>
+                                </WrapPanel>
+
+                                <WrapPanel Grid.Row="1" Visibility="Hidden" x:Name="Vu" >
+                                    <TextBlock Text="Combien de fois l'avez vous vu en entier?* "/>
+                                    <!-- Nbfini -->
+                                    <TextBox Text="{Binding NbFini, Mode=OneWay}" x:Name="saisieNbFini" VerticalAlignment="Bottom" Margin="10 0" Width="20" Style="{StaticResource fill_opinion_text}"/>
+                                </WrapPanel>
+
+
+                                <WrapPanel Grid.Row="2" Visibility="Hidden" x:Name="LastView" >
+                                    <TextBlock Text="Dernière fois que vous avez vu la série: "/>
+                                    <!-- DateFini -->
+                                    <DatePicker SelectedDate="{Binding DateFini}" SelectedDateFormat="Long" BorderThickness="0"/>
+                                </WrapPanel>
+
+
+                                <WrapPanel Grid.RowSpan="2" Visibility="Hidden" x:Name="progress">
+                                    <TextBlock Text="Où en êtes vous dans la série ?* "/>
+                                    <WrapPanel>
+                                        <WrapPanel>
+                                            <!-- Etat.Episode  -->
+                                            <TextBlock Text="Saison "/>
+                                            <TextBox Text="{Binding Etat.Saison, Mode=OneWay}" Name="saisieEtatSaison" Width="20" Style="{StaticResource fill_opinion_text}"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <!-- Etat.Episode  -->
+                                            <TextBlock Text="Épisode "/>
+                                            <TextBox Text="{Binding Etat.Episode, Mode=OneWay}" Name="saisieEtatEpisode"  Width="20" Style="{StaticResource fill_opinion_text}"/>
+                                        </WrapPanel>
+                                    </WrapPanel>
+                                </WrapPanel>
+
+                                <WrapPanel Grid.Row="3" Visibility="Hidden" x:Name="Recommence">
+                                    <TextBlock Text="Avez-vous recommencer la série ?* "/>
+                                    <RadioButton Name="recommenceRadio" VerticalAlignment="Center" FontSize="12" Checked="Commence_Checked">
+                                        <RadioButton.Content >oui</RadioButton.Content>
+                                    </RadioButton>
+                                    <RadioButton Name="nonRecommenceRadio" VerticalAlignment="Center" Checked="NonCommence_Checked">
+                                        <!-- Etat = null -->
+                                        <RadioButton.Content>non</RadioButton.Content>
+                                    </RadioButton>
+                                </WrapPanel>
+                                
+                                <WrapPanel Grid.Row="5" VerticalAlignment="Bottom">
+                                    <!-- DatePrevue = null -->
+                                    <CheckBox Name="planifieCheck" Click="Planifie_Click" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                                    <WrapPanel x:Name="Planifie" IsEnabled="False" Opacity="0.5">
+                                        <TextBlock Text="À voir le :"/>
+                                        <!-- DatePrevue -->
+                                        <DatePicker SelectedDate="{Binding DatePrevue}" SelectedDateFormat="Long" BorderThickness="0"/>
+                                    </WrapPanel>
+                                </WrapPanel>
+                            </Grid>
+
+                        </DockPanel>
+                        <DockPanel Grid.Column="1" Margin="5" Grid.ColumnSpan="2">
+                            <DockPanel  DockPanel.Dock="Top">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="3*"/>
+                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Avis " HorizontalAlignment="Left" DockPanel.Dock="Top" Grid.Column="0" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Note :" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                                    <!-- Note -->
+                                    <TextBox Name="textBoxNote" Width="25" Grid.Column="2" HorizontalAlignment="Right" FontSize="16"  Style="{StaticResource fill_opinion_text}" VerticalAlignment="Bottom" TextAlignment="Center"/>
+                                    <TextBlock Text="/10" Grid.Column="3" HorizontalAlignment="Left" TextAlignment="Justify" VerticalAlignment="Bottom"/>
+                                </Grid>
+                            </DockPanel>
+                            <!-- Commentaire -->
+                            <TextBox Name="textBoxComment" FontSize="16" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="auto" HorizontalScrollBarVisibility="Auto" Style="{StaticResource fill_opinion_text}"/>
+                        </DockPanel>
+                    </Grid>
+                </Grid>
+            </DockPanel>
+
+        </Border>
+    </DockPanel>
+</UserControl>

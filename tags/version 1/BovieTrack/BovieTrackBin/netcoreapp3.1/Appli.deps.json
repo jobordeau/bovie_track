@@ -1,0 +1,64 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Appli/1.0.0": {
+        "dependencies": {
+          "Data": "1.0.0",
+          "DataContractPersistance": "1.0.0",
+          "Modele": "1.0.0"
+        },
+        "runtime": {
+          "Appli.dll": {}
+        }
+      },
+      "Data/1.0.0": {
+        "dependencies": {
+          "Modele": "1.0.0"
+        },
+        "runtime": {
+          "Data.dll": {}
+        }
+      },
+      "DataContractPersistance/1.0.0": {
+        "dependencies": {
+          "Modele": "1.0.0"
+        },
+        "runtime": {
+          "DataContractPersistance.dll": {}
+        }
+      },
+      "Modele/1.0.0": {
+        "runtime": {
+          "Modele.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Appli/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataContractPersistance/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Modele/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
